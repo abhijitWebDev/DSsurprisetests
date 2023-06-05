@@ -1,0 +1,30 @@
+2 Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+
+
+function firstUniqChar(s) {
+  // Create a hash map to count the occurrences of each character
+  const charCount = new Map();
+
+  // Count the occurrences of each character
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    charCount.set(char, (charCount.get(char) || 0) + 1);
+  }
+
+  // Find the first non-repeating character and return its index
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (charCount.get(char) === 1) {
+      return i;
+    }
+  }
+
+  // If no non-repeating character found, return -1
+  return -1;
+}
+
+// Example usage:
+const s = "leetcode";
+const index = firstUniqChar(s);
+console.log(index);
+output 0
